@@ -1,0 +1,6 @@
+D:\Users\garng\source\repos\Espresso\Espresso\obj\Release\net6.0\EspressoLexer.cs
+D:\Users\garng\source\repos\Espresso\Espresso\obj\Release\net6.0\EspressoParser.cs
+D:\Users\garng\source\repos\Espresso\Espresso\obj\Release\net6.0\EspressoListener.cs
+D:\Users\garng\source\repos\Espresso\Espresso\obj\Release\net6.0\EspressoBaseListener.cs
+D:\Users\garng\source\repos\Espresso\Espresso\obj\Release\net6.0\EspressoVisitor.cs
+D:\Users\garng\source\repos\Espresso\Espresso\obj\Release\net6.0\EspressoBaseVisitor.cs
