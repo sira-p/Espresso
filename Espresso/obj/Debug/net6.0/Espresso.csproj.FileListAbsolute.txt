@@ -17,3 +17,4 @@ D:\Users\garng\source\repos\Espresso\Espresso\obj\Debug\net6.0\Espresso.dll
 D:\Users\garng\source\repos\Espresso\Espresso\obj\Debug\net6.0\refint\Espresso.dll
 D:\Users\garng\source\repos\Espresso\Espresso\obj\Debug\net6.0\Espresso.pdb
 D:\Users\garng\source\repos\Espresso\Espresso\obj\Debug\net6.0\ref\Espresso.dll
+D:\Users\garng\source\repos\Espresso\Espresso\bin\Debug\net6.0\Antlr4.Runtime.dll

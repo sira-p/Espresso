@@ -1,6 +1,6 @@
 /*
  * File: Grammar\Espresso.g4
- * Espresso Version 1.0
+ * Espresso Version 1.1
  * Author: Sira Pornsiriprasert
  * MIT License https://psira.mit-license.org/
  */
@@ -8,7 +8,7 @@
 grammar Espresso;
 
 options {
-	language= CSharp3;
+	language= CSharp;
 }
 
 @header {
@@ -75,6 +75,8 @@ id: NAME | OPEN_SQUARE_BRACKETS NAME CLOSE_SQUARE_BRACKETS;
 TRUE: 'true';
 FALSE: 'false';
 
+E: 'E';
+
 NAME: LETTER+;
 LETTER: [a-zA-Z];
 
@@ -94,7 +96,6 @@ CLOSE_CURLY_BRACKET: '}';
 
 COMMA: ',';
 CARET: '^';
-E: 'E';
 PERCENT: '%';
 ASTERISK: '*';
 SLASH: '/';

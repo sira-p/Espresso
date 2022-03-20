@@ -1,6 +1,6 @@
 ﻿/*
  * File: Espresso\ExpressionException.cs
- * Espresso Version 1.0
+ * Espresso Version 1.1
  * Author: Sira Pornsiriprasert
  * MIT License https://psira.mit-license.org/
  */
