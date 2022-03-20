@@ -6,5 +6,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Antlr4" Version="4.6.6"/>
+    <Content Include="C:\Users\garng\.nuget\packages\antlr4.runtime\4.6.6\lib\netstandard1.1\Antlr4.Runtime.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
