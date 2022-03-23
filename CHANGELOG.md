@@ -1,6 +1,6 @@
 # Changelog
 
-## Espresso v1.1.0 (In-Progress)
+## Espresso 1.1.0 (In-Progress)
 
 - Supports unary operators: percent (`%`) and factorial (`!`)
 - Supports trigonometry functions: 
@@ -20,12 +20,12 @@
 - Fixed exponential and power parsing orders
 - Now using Math.NET Numerics to evaluate functions!
 
-## Espresso v1.0.1
+## Espresso 1.0.1
 
 - Fixed exponential in parentheses parsing error
 - Added ANTLR4 dependency to build file
 
-## Espresso v1.0
+## Espresso 1.0
 
 - Supports binary operators: exponentiation (power; `^`), modulo (`%`), multiplication (`*`), division (`/`), addition (`+`), and subtraction (`-`)
 - Supports positive/negative signs unary operators for expressions e.g., `+4`, `-2`, `-(5*3)`
