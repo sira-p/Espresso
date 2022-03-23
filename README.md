@@ -52,13 +52,17 @@ Operator | Description | Usage
 
 Espresso suppports **exponential notation** and **floats**, both are handled as double.
 
-> .2 &nbsp; *is equivalent to* &nbsp; 0.2  
-> \>\> 0.2
+```
+.2 &nbsp; *is equivalent to* &nbsp; 0.2  
+\>\> 0.2
+```
 
-> 2E3  
-> \>\> 2000
-> 2E3E2
-> \>\> 2E+300
+```
+2E3  
+\>\> 2000  
+2E3E2  
+\>\> 2E+300
+```
 
 Note that exponential notation is right-associative i.e, evaluates from right to left.
 
@@ -71,9 +75,13 @@ Note that exponential notation is right-associative i.e, evaluates from right to
 Espresso follows standard order of evaluation and supports overriding order with **parentheses**.  
 Espresso can and will ignore whitespaces, including `\n`, `\r\n`, `\t`, and `\u000C`.  
 
-> 5 + 1 - 2 * 3 / 4 % 5 &nbsp; *is equivalent to* &nbsp; 5 + (1 - (2 * (3 / (4 % 5))))
+```
+5 + 1 - 2 * 3 / 4 % 5 &nbsp; *is equivalent to* &nbsp; 5 + (1 - (2 * (3 / (4 % 5))))
+```
 
-> 2^3^2 &nbsp; *is equivalent to* &nbsp; 2^(3^2)  
-> \>\> 512
+```
+2^3^2 &nbsp; *is equivalent to* &nbsp; 2^(3^2)  
+\>\> 512
+```
 
 Note that exponentiation operator (`^`) is right-associative i.e, evaluates from right to left.
