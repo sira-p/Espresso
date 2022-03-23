@@ -13,7 +13,7 @@ namespace Espresso
     public class Expression
     {
         public readonly string InitialExpression;
-        public EspressoParser.ExpressionContext? ParsedExpression { get; private set; }
+        public EspressoParser.ExpressionContext ParsedExpression { get; private set; }
         public string Error { get; private set; }
 
         public Expression(string expression)
@@ -47,7 +47,7 @@ namespace Espresso
             return ! String.IsNullOrEmpty(Error);
         }
 
-        public double Eval()
+        public object Evaluate()
         {
             if (HasError())
             {

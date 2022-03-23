@@ -1,3 +1,7 @@
+/.gitignore
 /.vs
-/.vscode
+/Espresso/bin/Debug
+/Espresso/obj/Debug
+/TestProject/bin/Debug
+/TestProject/obj/Debug
 /Espresso.sln

@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageId>ClassLibDotNetStandard</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>"Sira Pornsiriprasert"</Authors>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageLicense>https://github.com/sira-p/Espresso/blob/master/LICENSE</PackageLicense>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Antlr4" Version="4.6.6"/>
-    <Content Include="C:\Users\garng\.nuget\packages\antlr4.runtime\4.6.6\lib\netstandard1.1\Antlr4.Runtime.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <PackageReference Include="Antlr4" Version="4.6.6" PrivateAssets="compile;build;analyzers"/>
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0"/>
   </ItemGroup>
 </Project>

@@ -22,6 +22,8 @@ namespace Espresso
     {
         NEGATIVE,
         POSITIVE,
+        PERCENT,
+        FACTORIAL,
         NOT,
     }
 

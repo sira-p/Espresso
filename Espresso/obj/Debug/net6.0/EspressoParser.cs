@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from d:\Users\garng\source\repos\Espresso\Espresso\Grammar\Espresso.g4 by ANTLR 4.6.6
+// Generated from D:\Users\garng\source\repos\Espresso\Espresso\Grammar\Espresso.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -35,26 +35,28 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class EspressoParser : Parser {
 	public const int
-		TRUE=1, FALSE=2, E=3, NAME=4, LETTER=5, NUMBER=6, OPEN_PARENTHESIS=7, 
-		CLOSE_PARENTHESIS=8, OPEN_SQUARE_BRACKETS=9, CLOSE_SQUARE_BRACKETS=10, 
-		OPEN_CURLY_BRACKET=11, CLOSE_CURLY_BRACKET=12, COMMA=13, CARET=14, PERCENT=15, 
-		ASTERISK=16, SLASH=17, PLUS=18, MINUS=19, WHITESPACE=20, ANY=21;
+		TRUE=1, FALSE=2, E=3, NAME=4, LETTER=5, NUMBER=6, DOT=7, OPEN_PARENTHESIS=8, 
+		CLOSE_PARENTHESIS=9, OPEN_SQUARE_BRACKETS=10, CLOSE_SQUARE_BRACKETS=11, 
+		OPEN_CURLY_BRACKET=12, CLOSE_CURLY_BRACKET=13, SEMICOLON=14, ASTERISK=15, 
+		COMMA=16, CARET=17, DIV=18, EXCLAMATION=19, MINUS=20, MUL=21, PERCENT=22, 
+		PLUS=23, SLASH=24, WHITESPACE=25, ANY=26;
 	public const int
-		RULE_espresso = 0, RULE_statement = 1, RULE_expression = 2, RULE_value = 3, 
-		RULE_id = 4;
+		RULE_espresso = 0, RULE_expression = 1, RULE_value = 2, RULE_id = 3;
 	public static readonly string[] ruleNames = {
-		"espresso", "statement", "expression", "value", "id"
+		"espresso", "expression", "value", "id"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'true'", "'false'", "'E'", null, null, null, "'('", "')'", "'['", 
-		"']'", "'{'", "'}'", "','", "'^'", "'%'", "'*'", "'/'", "'+'", "'-'"
+		null, "'true'", "'false'", "'E'", null, null, null, "'.'", "'('", "')'", 
+		"'['", "']'", "'{'", "'}'", "';'", "'*'", "','", "'^'", "'÷'", "'!'", 
+		null, "'×'", "'%'", "'+'", "'/'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "TRUE", "FALSE", "E", "NAME", "LETTER", "NUMBER", "OPEN_PARENTHESIS", 
+		null, "TRUE", "FALSE", "E", "NAME", "LETTER", "NUMBER", "DOT", "OPEN_PARENTHESIS", 
 		"CLOSE_PARENTHESIS", "OPEN_SQUARE_BRACKETS", "CLOSE_SQUARE_BRACKETS", 
-		"OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET", "COMMA", "CARET", "PERCENT", 
-		"ASTERISK", "SLASH", "PLUS", "MINUS", "WHITESPACE", "ANY"
+		"OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET", "SEMICOLON", "ASTERISK", 
+		"COMMA", "CARET", "DIV", "EXCLAMATION", "MINUS", "MUL", "PERCENT", "PLUS", 
+		"SLASH", "WHITESPACE", "ANY"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -107,15 +109,16 @@ public partial class EspressoParser : Parser {
 		_interp = new ParserATNSimulator(this,_ATN);
 	}
 	public partial class EspressoContext : ParserRuleContext {
+		public ExpressionContext[] expression() {
+			return GetRuleContexts<ExpressionContext>();
+		}
+		public ExpressionContext expression(int i) {
+			return GetRuleContext<ExpressionContext>(i);
+		}
 		public ITerminalNode Eof() { return GetToken(EspressoParser.Eof, 0); }
-		public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		public StatementContext[] statement() {
-			return GetRuleContexts<StatementContext>();
-		}
-		public StatementContext statement(int i) {
-			return GetRuleContext<StatementContext>(i);
+		public ITerminalNode[] SEMICOLON() { return GetTokens(EspressoParser.SEMICOLON); }
+		public ITerminalNode SEMICOLON(int i) {
+			return GetToken(EspressoParser.SEMICOLON, i);
 		}
 		public EspressoContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -143,93 +146,36 @@ public partial class EspressoParser : Parser {
 		EnterRule(_localctx, 0, RULE_espresso);
 		int _la;
 		try {
+			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 16;
+			State = 8; expression(0);
+			State = 13;
 			_errHandler.Sync(this);
-			switch (_input.La(1)) {
-			case OPEN_CURLY_BRACKET:
-				{
-				State = 11;
+			_alt = Interpreter.AdaptivePredict(_input,0,_ctx);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 9; Match(SEMICOLON);
+					State = 10; expression(0);
+					}
+					} 
+				}
+				State = 15;
 				_errHandler.Sync(this);
-				_la = _input.La(1);
-				do {
-					{
-					{
-					State = 10; statement();
-					}
-					}
-					State = 13;
-					_errHandler.Sync(this);
-					_la = _input.La(1);
-				} while ( _la==OPEN_CURLY_BRACKET );
-				}
-				break;
-			case TRUE:
-			case FALSE:
-			case NAME:
-			case NUMBER:
-			case OPEN_PARENTHESIS:
-			case OPEN_SQUARE_BRACKETS:
-			case PLUS:
-			case MINUS:
+				_alt = Interpreter.AdaptivePredict(_input,0,_ctx);
+			}
+			State = 17;
+			_errHandler.Sync(this);
+			_la = _input.La(1);
+			if (_la==SEMICOLON) {
 				{
-				State = 15; expression(0);
+				State = 16; Match(SEMICOLON);
 				}
-				break;
-			default:
-				throw new NoViableAltException(this);
 			}
-			State = 18; Match(Eof);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.ReportError(this, re);
-			_errHandler.Recover(this, re);
-		}
-		finally {
-			ExitRule();
-		}
-		return _localctx;
-	}
 
-	public partial class StatementContext : ParserRuleContext {
-		public ITerminalNode OPEN_CURLY_BRACKET() { return GetToken(EspressoParser.OPEN_CURLY_BRACKET, 0); }
-		public ExpressionContext expression() {
-			return GetRuleContext<ExpressionContext>(0);
-		}
-		public ITerminalNode CLOSE_CURLY_BRACKET() { return GetToken(EspressoParser.CLOSE_CURLY_BRACKET, 0); }
-		public StatementContext(ParserRuleContext parent, int invokingState)
-			: base(parent, invokingState)
-		{
-		}
-		public override int RuleIndex { get { return RULE_statement; } }
-		public override void EnterRule(IParseTreeListener listener) {
-			IEspressoListener typedListener = listener as IEspressoListener;
-			if (typedListener != null) typedListener.EnterStatement(this);
-		}
-		public override void ExitRule(IParseTreeListener listener) {
-			IEspressoListener typedListener = listener as IEspressoListener;
-			if (typedListener != null) typedListener.ExitStatement(this);
-		}
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IEspressoVisitor<TResult> typedVisitor = visitor as IEspressoVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-
-	[RuleVersion(0)]
-	public StatementContext statement() {
-		StatementContext _localctx = new StatementContext(_ctx, State);
-		EnterRule(_localctx, 2, RULE_statement);
-		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 20; Match(OPEN_CURLY_BRACKET);
-			State = 21; expression(0);
-			State = 22; Match(CLOSE_CURLY_BRACKET);
+			State = 19; Match(Eof);
 			}
 		}
 		catch (RecognitionException re) {
@@ -294,19 +240,21 @@ public partial class EspressoParser : Parser {
 	public partial class BinaryExpressionContext : ExpressionContext {
 		public ExpressionContext left;
 		public ExpressionContext right;
-		public ITerminalNode PERCENT() { return GetToken(EspressoParser.PERCENT, 0); }
+		public ITerminalNode CARET() { return GetToken(EspressoParser.CARET, 0); }
 		public ExpressionContext[] expression() {
 			return GetRuleContexts<ExpressionContext>();
 		}
 		public ExpressionContext expression(int i) {
 			return GetRuleContext<ExpressionContext>(i);
 		}
+		public ITerminalNode E() { return GetToken(EspressoParser.E, 0); }
+		public ITerminalNode PERCENT() { return GetToken(EspressoParser.PERCENT, 0); }
 		public ITerminalNode ASTERISK() { return GetToken(EspressoParser.ASTERISK, 0); }
+		public ITerminalNode MUL() { return GetToken(EspressoParser.MUL, 0); }
 		public ITerminalNode SLASH() { return GetToken(EspressoParser.SLASH, 0); }
+		public ITerminalNode DIV() { return GetToken(EspressoParser.DIV, 0); }
 		public ITerminalNode PLUS() { return GetToken(EspressoParser.PLUS, 0); }
 		public ITerminalNode MINUS() { return GetToken(EspressoParser.MINUS, 0); }
-		public ITerminalNode CARET() { return GetToken(EspressoParser.CARET, 0); }
-		public ITerminalNode E() { return GetToken(EspressoParser.E, 0); }
 		public BinaryExpressionContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
 			IEspressoListener typedListener = listener as IEspressoListener;
@@ -323,10 +271,12 @@ public partial class EspressoParser : Parser {
 		}
 	}
 	public partial class UnaryExpressionContext : ExpressionContext {
-		public ITerminalNode PLUS() { return GetToken(EspressoParser.PLUS, 0); }
 		public ExpressionContext expression() {
 			return GetRuleContext<ExpressionContext>(0);
 		}
+		public ITerminalNode PERCENT() { return GetToken(EspressoParser.PERCENT, 0); }
+		public ITerminalNode EXCLAMATION() { return GetToken(EspressoParser.EXCLAMATION, 0); }
+		public ITerminalNode PLUS() { return GetToken(EspressoParser.PLUS, 0); }
 		public ITerminalNode MINUS() { return GetToken(EspressoParser.MINUS, 0); }
 		public UnaryExpressionContext(ExpressionContext context) { CopyFrom(context); }
 		public override void EnterRule(IParseTreeListener listener) {
@@ -354,25 +304,25 @@ public partial class EspressoParser : Parser {
 		int _parentState = State;
 		ExpressionContext _localctx = new ExpressionContext(_ctx, _parentState);
 		ExpressionContext _prevctx = _localctx;
-		int _startState = 4;
-		EnterRecursionRule(_localctx, 4, RULE_expression, _p);
+		int _startState = 2;
+		EnterRecursionRule(_localctx, 2, RULE_expression, _p);
 		int _la;
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 57;
+			State = 59;
 			_errHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(_input,3,_ctx) ) {
+			switch ( Interpreter.AdaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				{
 				_localctx = new PrimaryExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				State = 25; Match(OPEN_PARENTHESIS);
-				State = 26; expression(0);
-				State = 27; Match(CLOSE_PARENTHESIS);
+				State = 22; Match(OPEN_PARENTHESIS);
+				State = 23; expression(0);
+				State = 24; Match(CLOSE_PARENTHESIS);
 				((PrimaryExpressionContext)_localctx).type =  PrimaryExpressionType.PARENTHESES;	
 						
 				}
@@ -383,8 +333,8 @@ public partial class EspressoParser : Parser {
 				_localctx = new UnaryExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 30; Match(PLUS);
-				State = 31; expression(9);
+				State = 27; Match(PLUS);
+				State = 28; expression(7);
 				((UnaryExpressionContext)_localctx).type =  UnaryOperatorType.POSITIVE;
 				}
 				break;
@@ -394,8 +344,8 @@ public partial class EspressoParser : Parser {
 				_localctx = new UnaryExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 34; Match(MINUS);
-				State = 35; expression(8);
+				State = 31; Match(MINUS);
+				State = 32; expression(6);
 				((UnaryExpressionContext)_localctx).type =  UnaryOperatorType.NEGATIVE;
 				}
 				break;
@@ -405,24 +355,46 @@ public partial class EspressoParser : Parser {
 				_localctx = new PrimaryExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 38; id();
-				State = 39; Match(OPEN_PARENTHESIS);
-				State = 40; expression(0);
-				State = 45;
+				State = 35; id();
+				State = 36; Match(OPEN_PARENTHESIS);
+				State = 48;
 				_errHandler.Sync(this);
-				_la = _input.La(1);
-				while (_la==COMMA) {
+				switch ( Interpreter.AdaptivePredict(_input,4,_ctx) ) {
+				case 1:
 					{
-					{
-					State = 41; Match(COMMA);
-					State = 42; expression(0);
-					}
-					}
-					State = 47;
+					State = 38;
 					_errHandler.Sync(this);
 					_la = _input.La(1);
+					if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TRUE) | (1L << FALSE) | (1L << NAME) | (1L << NUMBER) | (1L << OPEN_PARENTHESIS) | (1L << MINUS) | (1L << PLUS))) != 0)) {
+						{
+						State = 37; expression(0);
+						}
+					}
+
+					}
+					break;
+
+				case 2:
+					{
+					State = 40; expression(0);
+					State = 45;
+					_errHandler.Sync(this);
+					_la = _input.La(1);
+					while (_la==COMMA) {
+						{
+						{
+						State = 41; Match(COMMA);
+						State = 42; expression(0);
+						}
+						}
+						State = 47;
+						_errHandler.Sync(this);
+						_la = _input.La(1);
+					}
+					}
+					break;
 				}
-				State = 48; Match(CLOSE_PARENTHESIS);
+				State = 50; Match(CLOSE_PARENTHESIS);
 				((PrimaryExpressionContext)_localctx).type =  PrimaryExpressionType.FUNCTION;
 						
 				}
@@ -433,7 +405,7 @@ public partial class EspressoParser : Parser {
 				_localctx = new PrimaryExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 51; id();
+				State = 53; id();
 				((PrimaryExpressionContext)_localctx).type =  PrimaryExpressionType.IDENTIFIER;
 				}
 				break;
@@ -443,33 +415,33 @@ public partial class EspressoParser : Parser {
 				_localctx = new PrimaryExpressionContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				State = 54; value();
+				State = 56; value();
 				((PrimaryExpressionContext)_localctx).type =  PrimaryExpressionType.VALUE;
 				}
 				break;
 			}
 			_ctx.stop = _input.Lt(-1);
-			State = 96;
+			State = 104;
 			_errHandler.Sync(this);
-			_alt = Interpreter.AdaptivePredict(_input,5,_ctx);
+			_alt = Interpreter.AdaptivePredict(_input,7,_ctx);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 94;
+					State = 102;
 					_errHandler.Sync(this);
-					switch ( Interpreter.AdaptivePredict(_input,4,_ctx) ) {
+					switch ( Interpreter.AdaptivePredict(_input,6,_ctx) ) {
 					case 1:
 						{
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 59;
-						if (!(Precpred(_ctx, 12))) throw new FailedPredicateException(this, "Precpred(_ctx, 12)");
-						State = 60; Match(PERCENT);
-						State = 61; ((BinaryExpressionContext)_localctx).right = expression(13);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.MODULO;
+						State = 61;
+						if (!(Precpred(_ctx, 14))) throw new FailedPredicateException(this, "Precpred(_ctx, 14)");
+						State = 62; Match(CARET);
+						State = 63; ((BinaryExpressionContext)_localctx).right = expression(14);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.POWER;
 						          		
 						}
 						break;
@@ -479,11 +451,11 @@ public partial class EspressoParser : Parser {
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 64;
-						if (!(Precpred(_ctx, 11))) throw new FailedPredicateException(this, "Precpred(_ctx, 11)");
-						State = 65; Match(ASTERISK);
-						State = 66; ((BinaryExpressionContext)_localctx).right = expression(12);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.MULTIPLICATION;
+						State = 66;
+						if (!(Precpred(_ctx, 13))) throw new FailedPredicateException(this, "Precpred(_ctx, 13)");
+						State = 67; Match(E);
+						State = 68; ((BinaryExpressionContext)_localctx).right = expression(13);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.EXPONENTIAL;
 						          		
 						}
 						break;
@@ -493,11 +465,11 @@ public partial class EspressoParser : Parser {
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 69;
-						if (!(Precpred(_ctx, 10))) throw new FailedPredicateException(this, "Precpred(_ctx, 10)");
-						State = 70; Match(SLASH);
-						State = 71; ((BinaryExpressionContext)_localctx).right = expression(11);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.DIVISION;
+						State = 71;
+						if (!(Precpred(_ctx, 12))) throw new FailedPredicateException(this, "Precpred(_ctx, 12)");
+						State = 72; Match(PERCENT);
+						State = 73; ((BinaryExpressionContext)_localctx).right = expression(13);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.MODULO;
 						          		
 						}
 						break;
@@ -507,11 +479,22 @@ public partial class EspressoParser : Parser {
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 74;
-						if (!(Precpred(_ctx, 7))) throw new FailedPredicateException(this, "Precpred(_ctx, 7)");
-						State = 75; Match(PLUS);
-						State = 76; ((BinaryExpressionContext)_localctx).right = expression(8);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.ADDITION;
+						State = 76;
+						if (!(Precpred(_ctx, 9))) throw new FailedPredicateException(this, "Precpred(_ctx, 9)");
+						State = 77;
+						_la = _input.La(1);
+						if ( !(_la==ASTERISK || _la==MUL) ) {
+						_errHandler.RecoverInline(this);
+						} else {
+							if (_input.La(1) == TokenConstants.Eof) {
+								matchedEOF = true;
+							}
+
+							_errHandler.ReportMatch(this);
+							Consume();
+						}
+						State = 78; ((BinaryExpressionContext)_localctx).right = expression(10);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.MULTIPLICATION;
 						          		
 						}
 						break;
@@ -521,11 +504,22 @@ public partial class EspressoParser : Parser {
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 79;
-						if (!(Precpred(_ctx, 6))) throw new FailedPredicateException(this, "Precpred(_ctx, 6)");
-						State = 80; Match(MINUS);
-						State = 81; ((BinaryExpressionContext)_localctx).right = expression(7);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.SUBTRACTION;
+						State = 81;
+						if (!(Precpred(_ctx, 8))) throw new FailedPredicateException(this, "Precpred(_ctx, 8)");
+						State = 82;
+						_la = _input.La(1);
+						if ( !(_la==DIV || _la==SLASH) ) {
+						_errHandler.RecoverInline(this);
+						} else {
+							if (_input.La(1) == TokenConstants.Eof) {
+								matchedEOF = true;
+							}
+
+							_errHandler.ReportMatch(this);
+							Consume();
+						}
+						State = 83; ((BinaryExpressionContext)_localctx).right = expression(9);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.DIVISION;
 						          		
 						}
 						break;
@@ -535,11 +529,11 @@ public partial class EspressoParser : Parser {
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 84;
+						State = 86;
 						if (!(Precpred(_ctx, 5))) throw new FailedPredicateException(this, "Precpred(_ctx, 5)");
-						State = 85; Match(CARET);
-						State = 86; ((BinaryExpressionContext)_localctx).right = expression(5);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.POWER;
+						State = 87; Match(PLUS);
+						State = 88; ((BinaryExpressionContext)_localctx).right = expression(6);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.ADDITION;
 						          		
 						}
 						break;
@@ -549,20 +543,42 @@ public partial class EspressoParser : Parser {
 						_localctx = new BinaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
 						((BinaryExpressionContext)_localctx).left = _prevctx;
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 89;
+						State = 91;
 						if (!(Precpred(_ctx, 4))) throw new FailedPredicateException(this, "Precpred(_ctx, 4)");
-						State = 90; Match(E);
-						State = 91; ((BinaryExpressionContext)_localctx).right = expression(4);
-						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.EXPONENTIAL;
+						State = 92; Match(MINUS);
+						State = 93; ((BinaryExpressionContext)_localctx).right = expression(5);
+						((BinaryExpressionContext)_localctx).type =  BinaryOperatorType.SUBTRACTION;
 						          		
+						}
+						break;
+
+					case 8:
+						{
+						_localctx = new UnaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						PushNewRecursionContext(_localctx, _startState, RULE_expression);
+						State = 96;
+						if (!(Precpred(_ctx, 11))) throw new FailedPredicateException(this, "Precpred(_ctx, 11)");
+						State = 97; Match(PERCENT);
+						((UnaryExpressionContext)_localctx).type =  UnaryOperatorType.PERCENT;
+						}
+						break;
+
+					case 9:
+						{
+						_localctx = new UnaryExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						PushNewRecursionContext(_localctx, _startState, RULE_expression);
+						State = 99;
+						if (!(Precpred(_ctx, 10))) throw new FailedPredicateException(this, "Precpred(_ctx, 10)");
+						State = 100; Match(EXCLAMATION);
+						((UnaryExpressionContext)_localctx).type =  UnaryOperatorType.FACTORIAL;
 						}
 						break;
 					}
 					} 
 				}
-				State = 98;
+				State = 106;
 				_errHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(_input,5,_ctx);
+				_alt = Interpreter.AdaptivePredict(_input,7,_ctx);
 			}
 			}
 		}
@@ -605,29 +621,29 @@ public partial class EspressoParser : Parser {
 	[RuleVersion(0)]
 	public ValueContext value() {
 		ValueContext _localctx = new ValueContext(_ctx, State);
-		EnterRule(_localctx, 6, RULE_value);
+		EnterRule(_localctx, 4, RULE_value);
 		try {
-			State = 105;
+			State = 113;
 			_errHandler.Sync(this);
 			switch (_input.La(1)) {
 			case NUMBER:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 99; Match(NUMBER);
+				State = 107; Match(NUMBER);
 				_localctx.type =  ValueType.NUMBER;
 				}
 				break;
 			case TRUE:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 101; Match(TRUE);
+				State = 109; Match(TRUE);
 				_localctx.type =  ValueType.TRUE;
 				}
 				break;
 			case FALSE:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 103; Match(FALSE);
+				State = 111; Match(FALSE);
 				_localctx.type =  ValueType.FALSE;
 				}
 				break;
@@ -647,9 +663,14 @@ public partial class EspressoParser : Parser {
 	}
 
 	public partial class IdContext : ParserRuleContext {
-		public ITerminalNode NAME() { return GetToken(EspressoParser.NAME, 0); }
-		public ITerminalNode OPEN_SQUARE_BRACKETS() { return GetToken(EspressoParser.OPEN_SQUARE_BRACKETS, 0); }
-		public ITerminalNode CLOSE_SQUARE_BRACKETS() { return GetToken(EspressoParser.CLOSE_SQUARE_BRACKETS, 0); }
+		public ITerminalNode[] NAME() { return GetTokens(EspressoParser.NAME); }
+		public ITerminalNode NAME(int i) {
+			return GetToken(EspressoParser.NAME, i);
+		}
+		public ITerminalNode[] NUMBER() { return GetTokens(EspressoParser.NUMBER); }
+		public ITerminalNode NUMBER(int i) {
+			return GetToken(EspressoParser.NUMBER, i);
+		}
 		public IdContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -673,27 +694,39 @@ public partial class EspressoParser : Parser {
 	[RuleVersion(0)]
 	public IdContext id() {
 		IdContext _localctx = new IdContext(_ctx, State);
-		EnterRule(_localctx, 8, RULE_id);
+		EnterRule(_localctx, 6, RULE_id);
+		int _la;
 		try {
-			State = 111;
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 115; Match(NAME);
+			State = 119;
 			_errHandler.Sync(this);
-			switch (_input.La(1)) {
-			case NAME:
-				EnterOuterAlt(_localctx, 1);
-				{
-				State = 107; Match(NAME);
+			_alt = Interpreter.AdaptivePredict(_input,9,_ctx);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 116;
+					_la = _input.La(1);
+					if ( !(_la==NAME || _la==NUMBER) ) {
+					_errHandler.RecoverInline(this);
+					} else {
+						if (_input.La(1) == TokenConstants.Eof) {
+							matchedEOF = true;
+						}
+
+						_errHandler.ReportMatch(this);
+						Consume();
+					}
+					}
+					} 
 				}
-				break;
-			case OPEN_SQUARE_BRACKETS:
-				EnterOuterAlt(_localctx, 2);
-				{
-				State = 108; Match(OPEN_SQUARE_BRACKETS);
-				State = 109; Match(NAME);
-				State = 110; Match(CLOSE_SQUARE_BRACKETS);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+				State = 121;
+				_errHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(_input,9,_ctx);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -709,71 +742,79 @@ public partial class EspressoParser : Parser {
 
 	public override bool Sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 2: return expression_sempred((ExpressionContext)_localctx, predIndex);
+		case 1: return expression_sempred((ExpressionContext)_localctx, predIndex);
 		}
 		return true;
 	}
 	private bool expression_sempred(ExpressionContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return Precpred(_ctx, 12);
+		case 0: return Precpred(_ctx, 14);
 
-		case 1: return Precpred(_ctx, 11);
+		case 1: return Precpred(_ctx, 13);
 
-		case 2: return Precpred(_ctx, 10);
+		case 2: return Precpred(_ctx, 12);
 
-		case 3: return Precpred(_ctx, 7);
+		case 3: return Precpred(_ctx, 9);
 
-		case 4: return Precpred(_ctx, 6);
+		case 4: return Precpred(_ctx, 8);
 
 		case 5: return Precpred(_ctx, 5);
 
 		case 6: return Precpred(_ctx, 4);
+
+		case 7: return Precpred(_ctx, 11);
+
+		case 8: return Precpred(_ctx, 10);
 		}
 		return true;
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x17t\x4\x2\t\x2"+
-		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x3\x2\x6\x2\xE\n\x2\r\x2"+
-		"\xE\x2\xF\x3\x2\x5\x2\x13\n\x2\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
-		"\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4"+
-		"\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\a\x4.\n\x4\f\x4\xE\x4\x31\v"+
-		"\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x5\x4<\n\x4"+
-		"\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3"+
-		"\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4"+
-		"\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3"+
-		"\x4\a\x4\x61\n\x4\f\x4\xE\x4\x64\v\x4\x3\x5\x3\x5\x3\x5\x3\x5\x3\x5\x3"+
-		"\x5\x5\x5l\n\x5\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6r\n\x6\x3\x6\x2\x2\x3\x6"+
-		"\a\x2\x2\x4\x2\x6\x2\b\x2\n\x2\x2\x2\x80\x2\x12\x3\x2\x2\x2\x4\x16\x3"+
-		"\x2\x2\x2\x6;\x3\x2\x2\x2\bk\x3\x2\x2\x2\nq\x3\x2\x2\x2\f\xE\x5\x4\x3"+
-		"\x2\r\f\x3\x2\x2\x2\xE\xF\x3\x2\x2\x2\xF\r\x3\x2\x2\x2\xF\x10\x3\x2\x2"+
-		"\x2\x10\x13\x3\x2\x2\x2\x11\x13\x5\x6\x4\x2\x12\r\x3\x2\x2\x2\x12\x11"+
-		"\x3\x2\x2\x2\x13\x14\x3\x2\x2\x2\x14\x15\a\x2\x2\x3\x15\x3\x3\x2\x2\x2"+
-		"\x16\x17\a\r\x2\x2\x17\x18\x5\x6\x4\x2\x18\x19\a\xE\x2\x2\x19\x5\x3\x2"+
-		"\x2\x2\x1A\x1B\b\x4\x1\x2\x1B\x1C\a\t\x2\x2\x1C\x1D\x5\x6\x4\x2\x1D\x1E"+
-		"\a\n\x2\x2\x1E\x1F\b\x4\x1\x2\x1F<\x3\x2\x2\x2 !\a\x14\x2\x2!\"\x5\x6"+
-		"\x4\v\"#\b\x4\x1\x2#<\x3\x2\x2\x2$%\a\x15\x2\x2%&\x5\x6\x4\n&\'\b\x4\x1"+
-		"\x2\'<\x3\x2\x2\x2()\x5\n\x6\x2)*\a\t\x2\x2*/\x5\x6\x4\x2+,\a\xF\x2\x2"+
-		",.\x5\x6\x4\x2-+\x3\x2\x2\x2.\x31\x3\x2\x2\x2/-\x3\x2\x2\x2/\x30\x3\x2"+
-		"\x2\x2\x30\x32\x3\x2\x2\x2\x31/\x3\x2\x2\x2\x32\x33\a\n\x2\x2\x33\x34"+
-		"\b\x4\x1\x2\x34<\x3\x2\x2\x2\x35\x36\x5\n\x6\x2\x36\x37\b\x4\x1\x2\x37"+
-		"<\x3\x2\x2\x2\x38\x39\x5\b\x5\x2\x39:\b\x4\x1\x2:<\x3\x2\x2\x2;\x1A\x3"+
-		"\x2\x2\x2; \x3\x2\x2\x2;$\x3\x2\x2\x2;(\x3\x2\x2\x2;\x35\x3\x2\x2\x2;"+
-		"\x38\x3\x2\x2\x2<\x62\x3\x2\x2\x2=>\f\xE\x2\x2>?\a\x11\x2\x2?@\x5\x6\x4"+
-		"\xF@\x41\b\x4\x1\x2\x41\x61\x3\x2\x2\x2\x42\x43\f\r\x2\x2\x43\x44\a\x12"+
-		"\x2\x2\x44\x45\x5\x6\x4\xE\x45\x46\b\x4\x1\x2\x46\x61\x3\x2\x2\x2GH\f"+
-		"\f\x2\x2HI\a\x13\x2\x2IJ\x5\x6\x4\rJK\b\x4\x1\x2K\x61\x3\x2\x2\x2LM\f"+
-		"\t\x2\x2MN\a\x14\x2\x2NO\x5\x6\x4\nOP\b\x4\x1\x2P\x61\x3\x2\x2\x2QR\f"+
-		"\b\x2\x2RS\a\x15\x2\x2ST\x5\x6\x4\tTU\b\x4\x1\x2U\x61\x3\x2\x2\x2VW\f"+
-		"\a\x2\x2WX\a\x10\x2\x2XY\x5\x6\x4\aYZ\b\x4\x1\x2Z\x61\x3\x2\x2\x2[\\\f"+
-		"\x6\x2\x2\\]\a\x5\x2\x2]^\x5\x6\x4\x6^_\b\x4\x1\x2_\x61\x3\x2\x2\x2`="+
-		"\x3\x2\x2\x2`\x42\x3\x2\x2\x2`G\x3\x2\x2\x2`L\x3\x2\x2\x2`Q\x3\x2\x2\x2"+
-		"`V\x3\x2\x2\x2`[\x3\x2\x2\x2\x61\x64\x3\x2\x2\x2\x62`\x3\x2\x2\x2\x62"+
-		"\x63\x3\x2\x2\x2\x63\a\x3\x2\x2\x2\x64\x62\x3\x2\x2\x2\x65\x66\a\b\x2"+
-		"\x2\x66l\b\x5\x1\x2gh\a\x3\x2\x2hl\b\x5\x1\x2ij\a\x4\x2\x2jl\b\x5\x1\x2"+
-		"k\x65\x3\x2\x2\x2kg\x3\x2\x2\x2ki\x3\x2\x2\x2l\t\x3\x2\x2\x2mr\a\x6\x2"+
-		"\x2no\a\v\x2\x2op\a\x6\x2\x2pr\a\f\x2\x2qm\x3\x2\x2\x2qn\x3\x2\x2\x2r"+
-		"\v\x3\x2\x2\x2\n\xF\x12/;`\x62kq";
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x1C}\x4\x2\t\x2"+
+		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x3\x2\x3\x2\x3\x2\a\x2\xE\n\x2\f\x2"+
+		"\xE\x2\x11\v\x2\x3\x2\x5\x2\x14\n\x2\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x5\x3)\n\x3\x3\x3\x3\x3\x3\x3\a\x3.\n\x3\f\x3\xE\x3\x31\v"+
+		"\x3\x5\x3\x33\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x5\x3>\n\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
+		"\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\a\x3i\n\x3\f\x3"+
+		"\xE\x3l\v\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x5\x4t\n\x4\x3\x5\x3"+
+		"\x5\a\x5x\n\x5\f\x5\xE\x5{\v\x5\x3\x5\x2\x2\x3\x4\x6\x2\x2\x4\x2\x6\x2"+
+		"\b\x2\x2\x5\x4\x2\x11\x11\x17\x17\x4\x2\x14\x14\x1A\x1A\x4\x2\x6\x6\b"+
+		"\b\x8E\x2\n\x3\x2\x2\x2\x4=\x3\x2\x2\x2\x6s\x3\x2\x2\x2\bu\x3\x2\x2\x2"+
+		"\n\xF\x5\x4\x3\x2\v\f\a\x10\x2\x2\f\xE\x5\x4\x3\x2\r\v\x3\x2\x2\x2\xE"+
+		"\x11\x3\x2\x2\x2\xF\r\x3\x2\x2\x2\xF\x10\x3\x2\x2\x2\x10\x13\x3\x2\x2"+
+		"\x2\x11\xF\x3\x2\x2\x2\x12\x14\a\x10\x2\x2\x13\x12\x3\x2\x2\x2\x13\x14"+
+		"\x3\x2\x2\x2\x14\x15\x3\x2\x2\x2\x15\x16\a\x2\x2\x3\x16\x3\x3\x2\x2\x2"+
+		"\x17\x18\b\x3\x1\x2\x18\x19\a\n\x2\x2\x19\x1A\x5\x4\x3\x2\x1A\x1B\a\v"+
+		"\x2\x2\x1B\x1C\b\x3\x1\x2\x1C>\x3\x2\x2\x2\x1D\x1E\a\x19\x2\x2\x1E\x1F"+
+		"\x5\x4\x3\t\x1F \b\x3\x1\x2 >\x3\x2\x2\x2!\"\a\x16\x2\x2\"#\x5\x4\x3\b"+
+		"#$\b\x3\x1\x2$>\x3\x2\x2\x2%&\x5\b\x5\x2&\x32\a\n\x2\x2\')\x5\x4\x3\x2"+
+		"(\'\x3\x2\x2\x2()\x3\x2\x2\x2)\x33\x3\x2\x2\x2*/\x5\x4\x3\x2+,\a\x12\x2"+
+		"\x2,.\x5\x4\x3\x2-+\x3\x2\x2\x2.\x31\x3\x2\x2\x2/-\x3\x2\x2\x2/\x30\x3"+
+		"\x2\x2\x2\x30\x33\x3\x2\x2\x2\x31/\x3\x2\x2\x2\x32(\x3\x2\x2\x2\x32*\x3"+
+		"\x2\x2\x2\x33\x34\x3\x2\x2\x2\x34\x35\a\v\x2\x2\x35\x36\b\x3\x1\x2\x36"+
+		">\x3\x2\x2\x2\x37\x38\x5\b\x5\x2\x38\x39\b\x3\x1\x2\x39>\x3\x2\x2\x2:"+
+		";\x5\x6\x4\x2;<\b\x3\x1\x2<>\x3\x2\x2\x2=\x17\x3\x2\x2\x2=\x1D\x3\x2\x2"+
+		"\x2=!\x3\x2\x2\x2=%\x3\x2\x2\x2=\x37\x3\x2\x2\x2=:\x3\x2\x2\x2>j\x3\x2"+
+		"\x2\x2?@\f\x10\x2\x2@\x41\a\x13\x2\x2\x41\x42\x5\x4\x3\x10\x42\x43\b\x3"+
+		"\x1\x2\x43i\x3\x2\x2\x2\x44\x45\f\xF\x2\x2\x45\x46\a\x5\x2\x2\x46G\x5"+
+		"\x4\x3\xFGH\b\x3\x1\x2Hi\x3\x2\x2\x2IJ\f\xE\x2\x2JK\a\x18\x2\x2KL\x5\x4"+
+		"\x3\xFLM\b\x3\x1\x2Mi\x3\x2\x2\x2NO\f\v\x2\x2OP\t\x2\x2\x2PQ\x5\x4\x3"+
+		"\fQR\b\x3\x1\x2Ri\x3\x2\x2\x2ST\f\n\x2\x2TU\t\x3\x2\x2UV\x5\x4\x3\vVW"+
+		"\b\x3\x1\x2Wi\x3\x2\x2\x2XY\f\a\x2\x2YZ\a\x19\x2\x2Z[\x5\x4\x3\b[\\\b"+
+		"\x3\x1\x2\\i\x3\x2\x2\x2]^\f\x6\x2\x2^_\a\x16\x2\x2_`\x5\x4\x3\a`\x61"+
+		"\b\x3\x1\x2\x61i\x3\x2\x2\x2\x62\x63\f\r\x2\x2\x63\x64\a\x18\x2\x2\x64"+
+		"i\b\x3\x1\x2\x65\x66\f\f\x2\x2\x66g\a\x15\x2\x2gi\b\x3\x1\x2h?\x3\x2\x2"+
+		"\x2h\x44\x3\x2\x2\x2hI\x3\x2\x2\x2hN\x3\x2\x2\x2hS\x3\x2\x2\x2hX\x3\x2"+
+		"\x2\x2h]\x3\x2\x2\x2h\x62\x3\x2\x2\x2h\x65\x3\x2\x2\x2il\x3\x2\x2\x2j"+
+		"h\x3\x2\x2\x2jk\x3\x2\x2\x2k\x5\x3\x2\x2\x2lj\x3\x2\x2\x2mn\a\b\x2\x2"+
+		"nt\b\x4\x1\x2op\a\x3\x2\x2pt\b\x4\x1\x2qr\a\x4\x2\x2rt\b\x4\x1\x2sm\x3"+
+		"\x2\x2\x2so\x3\x2\x2\x2sq\x3\x2\x2\x2t\a\x3\x2\x2\x2uy\a\x6\x2\x2vx\t"+
+		"\x4\x2\x2wv\x3\x2\x2\x2x{\x3\x2\x2\x2yw\x3\x2\x2\x2yz\x3\x2\x2\x2z\t\x3"+
+		"\x2\x2\x2{y\x3\x2\x2\x2\f\xF\x13(/\x32=hjsy";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

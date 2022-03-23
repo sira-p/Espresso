@@ -1,21 +1,23 @@
 ﻿/*
  * File: Espresso\EspressoVisitor.cs
- * Espresso Version 1.1
+ * File Created: Saturday, 19th March 2022 1:19:51 am
+ * Last Modified: Wednesday, 23rd March 2022 9:44:14 pm
  * Author: Sira Pornsiriprasert
  * MIT License https://psira.mit-license.org/
  */
 
 using Antlr4.Runtime.Misc;
+using MathNet.Numerics;
 
 namespace Espresso.Grammar
 {
-    public class EspressoVisitor : EspressoBaseVisitor<double>
+    public class EspressoVisitor : EspressoBaseVisitor<object>
     {
    
-        public override double VisitBinaryExpression(EspressoParser.BinaryExpressionContext context)
+        public override object VisitBinaryExpression(EspressoParser.BinaryExpressionContext context)
         {
-            double left = Visit(context.left);
-            double right = Visit(context.right);
+            double left = (double) Visit(context.left);
+            double right = (double) Visit(context.right);
             switch (context.type)
             {
                 case BinaryOperatorType.MODULO:
@@ -37,15 +39,19 @@ namespace Espresso.Grammar
             }
         }
 
-        public override double VisitUnaryExpression([NotNull] EspressoParser.UnaryExpressionContext context)
+        public override object VisitUnaryExpression([NotNull] EspressoParser.UnaryExpressionContext context)
         {
             EspressoParser.ExpressionContext expression = context.expression();
             switch (context.type)
             {
                 case UnaryOperatorType.POSITIVE:
-                    return Visit(expression);
+                    return (double) Visit(expression);
                 case UnaryOperatorType.NEGATIVE:
-                    return -1 * Visit(expression);
+                    return -1 * (double) Visit(expression);
+                case UnaryOperatorType.PERCENT:
+                    return (double) Visit(expression) / 100;
+                case UnaryOperatorType.FACTORIAL:
+                    return SpecialFunctions.Factorial((int) Visit(expression));
                 case UnaryOperatorType.NOT:
                     throw new NotImplementedException();
                 default:
@@ -53,31 +59,38 @@ namespace Espresso.Grammar
             }
         }
 
-        public override double VisitPrimaryExpression([NotNull] EspressoParser.PrimaryExpressionContext context)
+        public override object VisitPrimaryExpression([NotNull] EspressoParser.PrimaryExpressionContext context)
         {
             switch (context.type)
             {
                 case PrimaryExpressionType.PARENTHESES:
                     return Visit(context.expression(0));
                 case PrimaryExpressionType.VALUE:
-                    return VisitValue(context.value());
+                    return Visit(context.value());
                 case PrimaryExpressionType.FUNCTION:
-                    throw new NotImplementedException();
+                    object[] Args = context.expression().Select(x => Visit(x)).ToArray();
+                    try {
+                        return Evaluator.EvaluateFunction(context.id().GetText(), Args);
+                    } catch (InvalidCastException){
+                        throw new ArgumentException(String.Format("Function {0} received incorrect argument type.", context.id().GetText()));
+                    }
+                case PrimaryExpressionType.IDENTIFIER:
+                    return Evaluator.EvaluateIdentifier(context.id().GetText());
                 default:
                     throw new NotSupportedException();
             }
         }
 
-        public override double VisitValue([NotNull] EspressoParser.ValueContext context)
+        public override object VisitValue([NotNull] EspressoParser.ValueContext context)
         {
             switch (context.type)
             {
                 case ValueType.NUMBER:
-                    return  double.Parse(context.NUMBER().GetText(), System.Globalization.CultureInfo.InvariantCulture);
+                    return double.Parse(context.NUMBER().GetText(), System.Globalization.CultureInfo.InvariantCulture);
                 case ValueType.TRUE:
-                    throw new NotImplementedException();
+                    return true;
                 case ValueType.FALSE:
-                    throw new NotImplementedException();
+                    return false;
                 default:
                     throw new NotSupportedException();
             }

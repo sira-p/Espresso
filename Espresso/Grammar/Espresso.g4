@@ -1,10 +1,11 @@
 /*
  * File: Grammar\Espresso.g4
- * Espresso Version 1.1
+ * File Created: Saturday, 19th March 2022 12:55:00 am
+ * Last Modified: Wednesday, 23rd March 2022 9:44:04 pm
  * Author: Sira Pornsiriprasert
  * MIT License https://psira.mit-license.org/
  */
- 
+
 grammar Espresso;
 
 options {
@@ -16,9 +17,7 @@ options {
 using Espresso;
 }
 
-espresso: (statement+ | expression) EOF;
-
-statement: OPEN_CURLY_BRACKET expression CLOSE_CURLY_BRACKET;
+espresso: expression (SEMICOLON expression)* SEMICOLON? EOF;
 
 expression
 	returns[object type]:
@@ -27,15 +26,24 @@ expression
 	OPEN_PARENTHESIS expression CLOSE_PARENTHESIS {$type = PrimaryExpressionType.PARENTHESES;	
 		} # PrimaryExpression
 
-	/* Binary Expressions */
+	// Power
+	| <assoc= right> left= expression CARET right= expression {$type = BinaryOperatorType.POWER;
+		} # BinaryExpression
+	// Exponential
+	| <assoc= right> left= expression E right= expression {$type = BinaryOperatorType.EXPONENTIAL;
+		} # BinaryExpression
 	// Modulo
 	| left= expression PERCENT right= expression {$type = BinaryOperatorType.MODULO;
 		} # BinaryExpression
+	// Percent
+	| expression PERCENT {$type = UnaryOperatorType.PERCENT;} # UnaryExpression
+	// Factorial
+	| expression EXCLAMATION {$type = UnaryOperatorType.FACTORIAL;} # UnaryExpression
 	// Multiplication
-	| left= expression ASTERISK right= expression {$type = BinaryOperatorType.MULTIPLICATION;
+	| left= expression (ASTERISK | MUL) right= expression {$type = BinaryOperatorType.MULTIPLICATION;
 		} # BinaryExpression
 	// Division
-	| left= expression SLASH right= expression {$type = BinaryOperatorType.DIVISION;
+	| left= expression (SLASH | DIV) right= expression {$type = BinaryOperatorType.DIVISION;
 		} # BinaryExpression
 	// Unary Sign
 	| PLUS expression	{$type = UnaryOperatorType.POSITIVE;} # UnaryExpression
@@ -46,18 +54,12 @@ expression
 	// Subtraction
 	| left= expression MINUS right= expression {$type = BinaryOperatorType.SUBTRACTION;
 		} # BinaryExpression
-	// Power
-	| <assoc= right> left= expression CARET right= expression {$type = BinaryOperatorType.POWER;
-		} # BinaryExpression
-	// Exponential
-	| <assoc= right> left= expression E right= expression {$type = BinaryOperatorType.EXPONENTIAL;
-		} # BinaryExpression
 
-	/* Primary Expression */
 	// Function
-	| id OPEN_PARENTHESIS expression (
-		COMMA expression
-	)* CLOSE_PARENTHESIS {$type = PrimaryExpressionType.FUNCTION;
+	| id OPEN_PARENTHESIS (
+		expression?
+		| expression (COMMA expression)*
+	) CLOSE_PARENTHESIS {$type = PrimaryExpressionType.FUNCTION;
 		} # PrimaryExpression
 	// Identifier
 	| id {$type = PrimaryExpressionType.IDENTIFIER;} # PrimaryExpression
@@ -70,37 +72,46 @@ value
 	| TRUE	{$type = ValueType.TRUE;}
 	| FALSE	{$type = ValueType.FALSE;};
 
-id: NAME | OPEN_SQUARE_BRACKETS NAME CLOSE_SQUARE_BRACKETS;
+id: NAME (NUMBER | NAME)*;
 
 TRUE: 'true';
 FALSE: 'false';
 
 E: 'E';
 
-NAME: LETTER+;
+NAME: (LETTER | UNDERSCORE | PI) +;
 LETTER: [a-zA-Z];
 
-NUMBER: DIGIT+ ('.' DIGIT+)?;
+NUMBER: (DIGIT+ (DOT DIGIT+)?) | DOT DIGIT+;
+DOT: '.';
 fragment DIGIT: [0-9];
 
 // Overriding priority, function
 OPEN_PARENTHESIS: '(';
 CLOSE_PARENTHESIS: ')';
-// Identifier; constants/ variable, Note: single letter identifier can be defined without brackets
+// Units
 OPEN_SQUARE_BRACKETS: '[';
 CLOSE_SQUARE_BRACKETS: ']';
-// Equation separation for system of equations
+// Arrays
 OPEN_CURLY_BRACKET: '{';
 CLOSE_CURLY_BRACKET: '}';
+// Separating expression
+SEMICOLON: ';';
 
-
+ASTERISK: '*';
 COMMA: ',';
 CARET: '^';
+DIV: '÷';
+EXCLAMATION: '!';
+MINUS: '-' | '−';
+MUL: '×';
 PERCENT: '%';
-ASTERISK: '*';
-SLASH: '/';
 PLUS: '+';
-MINUS: '-';
+SLASH: '/';
+VBAR: '|';
+
+UNDERSCORE: '_';
+PI: 'π';
 
 WHITESPACE:
 	(

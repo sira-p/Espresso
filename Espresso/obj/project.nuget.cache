@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "bEqXs2V/T5KG/DPc4akxpud9u5eGBl7CUhcFQZVUfkX0CU7S6jHgcXr4NLlmhMJLD9HVXcw6IYyvo7hMF0FIGg==",
+  "dgSpecHash": "8i4HNbb28NA96tzsRhpRA5X7CWjCyQTfJbjz3ktWjDL6p4dTOBXs8+SuTMpkvChvSOd0soHnRO1kExV+ZFbVrA==",
   "success": true,
   "projectFilePath": "D:\\Users\\garng\\source\\repos\\Espresso\\Espresso\\Espresso.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\garng\\.nuget\\packages\\antlr4\\4.6.6\\antlr4.4.6.6.nupkg.sha512",
     "C:\\Users\\garng\\.nuget\\packages\\antlr4.codegenerator\\4.6.6\\antlr4.codegenerator.4.6.6.nupkg.sha512",
     "C:\\Users\\garng\\.nuget\\packages\\antlr4.runtime\\4.6.6\\antlr4.runtime.4.6.6.nupkg.sha512",
+    "C:\\Users\\garng\\.nuget\\packages\\mathnet.numerics\\4.15.0\\mathnet.numerics.4.15.0.nupkg.sha512",
     "C:\\Users\\garng\\.nuget\\packages\\microsoft.netcore.platforms\\1.0.1\\microsoft.netcore.platforms.1.0.1.nupkg.sha512",
     "C:\\Users\\garng\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Users\\garng\\.nuget\\packages\\microsoft.win32.primitives\\4.0.1\\microsoft.win32.primitives.4.0.1.nupkg.sha512",

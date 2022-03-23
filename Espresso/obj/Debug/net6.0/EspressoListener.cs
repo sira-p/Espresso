@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from d:\Users\garng\source\repos\Espresso\Espresso\Grammar\Espresso.g4 by ANTLR 4.6.6
+// Generated from D:\Users\garng\source\repos\Espresso\Espresso\Grammar\Espresso.g4 by ANTLR 4.6.6
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -84,17 +84,6 @@ public interface IEspressoListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitEspresso([NotNull] EspressoParser.EspressoContext context);
-
-	/// <summary>
-	/// Enter a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterStatement([NotNull] EspressoParser.StatementContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitStatement([NotNull] EspressoParser.StatementContext context);
 
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="EspressoParser.expression"/>.

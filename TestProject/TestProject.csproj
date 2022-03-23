@@ -6,9 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
-    <PackageReference Include="NCalc2" Version="2.1.0"/>
     <PackageReference Include="Antlr4" Version="4.6.6"/>
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Espresso\Espresso.csproj"/>
