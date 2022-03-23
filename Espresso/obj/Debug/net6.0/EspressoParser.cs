@@ -39,7 +39,7 @@ public partial class EspressoParser : Parser {
 		CLOSE_PARENTHESIS=9, OPEN_SQUARE_BRACKETS=10, CLOSE_SQUARE_BRACKETS=11, 
 		OPEN_CURLY_BRACKET=12, CLOSE_CURLY_BRACKET=13, SEMICOLON=14, ASTERISK=15, 
 		COMMA=16, CARET=17, DIV=18, EXCLAMATION=19, MINUS=20, MUL=21, PERCENT=22, 
-		PLUS=23, SLASH=24, WHITESPACE=25, ANY=26;
+		PLUS=23, SLASH=24, VBAR=25, UNDERSCORE=26, PI=27, WHITESPACE=28, ANY=29;
 	public const int
 		RULE_espresso = 0, RULE_expression = 1, RULE_value = 2, RULE_id = 3;
 	public static readonly string[] ruleNames = {
@@ -49,14 +49,14 @@ public partial class EspressoParser : Parser {
 	private static readonly string[] _LiteralNames = {
 		null, "'true'", "'false'", "'E'", null, null, null, "'.'", "'('", "')'", 
 		"'['", "']'", "'{'", "'}'", "';'", "'*'", "','", "'^'", "'÷'", "'!'", 
-		null, "'×'", "'%'", "'+'", "'/'"
+		null, "'×'", "'%'", "'+'", "'/'", "'|'", "'_'", "'π'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, "TRUE", "FALSE", "E", "NAME", "LETTER", "NUMBER", "DOT", "OPEN_PARENTHESIS", 
 		"CLOSE_PARENTHESIS", "OPEN_SQUARE_BRACKETS", "CLOSE_SQUARE_BRACKETS", 
 		"OPEN_CURLY_BRACKET", "CLOSE_CURLY_BRACKET", "SEMICOLON", "ASTERISK", 
 		"COMMA", "CARET", "DIV", "EXCLAMATION", "MINUS", "MUL", "PERCENT", "PLUS", 
-		"SLASH", "WHITESPACE", "ANY"
+		"SLASH", "VBAR", "UNDERSCORE", "PI", "WHITESPACE", "ANY"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -770,7 +770,7 @@ public partial class EspressoParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x1C}\x4\x2\t\x2"+
+		"\x3\xAF6F\x8320\x479D\xB75C\x4880\x1605\x191C\xAB37\x3\x1F}\x4\x2\t\x2"+
 		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x3\x2\x3\x2\x3\x2\a\x2\xE\n\x2\f\x2"+
 		"\xE\x2\x11\v\x2\x3\x2\x5\x2\x14\n\x2\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x3"+
 		"\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3\x3"+
