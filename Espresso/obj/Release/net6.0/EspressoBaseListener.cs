@@ -98,19 +98,6 @@ public partial class EspressoBaseListener : IEspressoListener {
 	public virtual void ExitEspresso([NotNull] EspressoParser.EspressoContext context) { }
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterStatement([NotNull] EspressoParser.StatementContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitStatement([NotNull] EspressoParser.StatementContext context) { }
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="EspressoParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

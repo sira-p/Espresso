@@ -86,17 +86,6 @@ public interface IEspressoListener : IParseTreeListener {
 	void ExitEspresso([NotNull] EspressoParser.EspressoContext context);
 
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterStatement([NotNull] EspressoParser.StatementContext context);
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitStatement([NotNull] EspressoParser.StatementContext context);
-
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="EspressoParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

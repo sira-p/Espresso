@@ -6,9 +6,10 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Espresso/1.0.0": {
+      "Espresso/1.1.0": {
         "dependencies": {
-          "Antlr4": "4.6.6"
+          "Antlr4": "4.6.6",
+          "MathNet.Numerics": "4.15.0"
         },
         "runtime": {
           "Espresso.dll": {}
@@ -29,6 +30,14 @@
           "lib/netstandard1.1/Antlr4.Runtime.dll": {
             "assemblyVersion": "4.6.0.0",
             "fileVersion": "4.6.6.0"
+          }
+        }
+      },
+      "MathNet.Numerics/4.15.0": {
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.0.0"
           }
         }
       },
@@ -680,7 +689,7 @@
     }
   },
   "libraries": {
-    "Espresso/1.0.0": {
+    "Espresso/1.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -705,6 +714,13 @@
       "sha512": "sha512-NlbRjkTCidRh1QeWvGfFPKq0sqpPZrAwGaSTV0X2jL8buZxTf9/aQ7PehFAmc7erXLUQ3YMZEVZU86aQwma2+w==",
       "path": "antlr4.runtime/4.6.6",
       "hashPath": "antlr4.runtime.4.6.6.nupkg.sha512"
+    },
+    "MathNet.Numerics/4.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
+      "path": "mathnet.numerics/4.15.0",
+      "hashPath": "mathnet.numerics.4.15.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.0.1": {
       "type": "package",

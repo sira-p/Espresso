@@ -68,13 +68,6 @@ public interface IEspressoVisitor<Result> : IParseTreeVisitor<Result> {
 	Result VisitEspresso([NotNull] EspressoParser.EspressoContext context);
 
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="EspressoParser.statement"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitStatement([NotNull] EspressoParser.StatementContext context);
-
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="EspressoParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
