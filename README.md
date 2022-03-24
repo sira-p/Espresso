@@ -10,7 +10,7 @@ Espresso is a mathematical expression evaluator in .NET based on ANTLR4.
 using Espresso;
 
 Expression expression = new ("3E2+3*2^(1+1)");
-double result = expression.Eval();
+double result = (double) expression.Evaluate();
 Debug.Assert(result == 312);
 ```
 
